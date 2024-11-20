@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 50fe499e95f45b843955616aa625aa9e
+  m_SerializeEntries:
+  - m_GUID: 0c364d16d132da14a95baaedcdc4732c
+    m_Address: Assets/Prefabs/CardTemplate/HorizontalContainer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 391a9d0c9336154498e10ac4e3a8608e
+    m_Address: Assets/Prefabs/CardTemplate/Card.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 235fd10502795fc43b696f7cebe60f29, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 980af808feb84094fa002170ae89a931, type: 2}
+    - {fileID: 11400000, guid: 6112e82a374c4f3459bff271082a6af9, type: 2}
