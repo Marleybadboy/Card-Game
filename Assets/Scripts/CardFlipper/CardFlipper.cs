@@ -1,4 +1,5 @@
 using DG.Tweening;
+using HCC.DataBase;
 using HCC.Interfaces;
 using Unity.Mathematics;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class CardFlipper : MonoBehaviour, IFlipper
     [SerializeField] private GameObject _cardBack;
     [SerializeField] private GameObject _cardFront;
 
+    private CardType _cardType;
 
     #endregion
 
@@ -32,6 +34,10 @@ public class CardFlipper : MonoBehaviour, IFlipper
 
     #region Methods
 
+    public void Initialize(CardType cardType)
+    {
+        _cardType = cardType;
+    }
     public void Flip()
     {
         Sequence seq = DOTween.Sequence();
@@ -41,7 +47,7 @@ public class CardFlipper : MonoBehaviour, IFlipper
 
     private Tween RotateCard(float3 endValue, Transform rotateObject) 
     {
-        return rotateObject.DORotate(endValue,2f);
+        return rotateObject.DORotate(endValue,1f);
     }
 
     #endregion 

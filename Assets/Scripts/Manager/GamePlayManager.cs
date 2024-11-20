@@ -1,4 +1,9 @@
+using System.Collections.Generic;
 using HCC.Addressables;
+using HCC.DataBase;
+using HCC.Interfaces;
+using HCC.Structs;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -7,6 +12,7 @@ namespace HCC.Manager
     public abstract class GamePlayManager : MonoBehaviour
     {
         #region Fields
+        
         [Header("Game Board Size")]
         [SerializeField] private int _height;
         [SerializeField] private int _width;
@@ -14,6 +20,12 @@ namespace HCC.Manager
         
         [SerializeField] private AssetReferenceGameObject _linePrefab;
         [SerializeField] private AssetReferenceGameObject _cardPrefab;
+        
+        [SerializeField] private CardType[] _cardTypes;
+        
+        private HashSet<IFlipper> _flippers = new HashSet<IFlipper>();
+        
+        public List<CardType> _typesEx = new List<CardType>();
         
         #endregion
 
@@ -32,6 +44,18 @@ namespace HCC.Manager
         #endregion
 
         #region Methods
+
+        [Button("GenerATE")]
+        private void GenerateGameBoard()
+        {
+           var shuffle =  new ShuffleDeck<CardType>(_width * _height, _cardTypes);
+            
+           shuffle.Execute();
+           
+           _typesEx = shuffle.Result;
+            
+        }
+
 
         protected virtual void CreateGameBoard()
         {
@@ -67,12 +91,24 @@ namespace HCC.Manager
                     if (prefab == null) return;
                     
                     prefab.transform.SetParent(cardParent);
+
+                    var flipper = prefab.GetComponent<IFlipper>() ?? prefab.AddComponent<CardFlipper>();
                     
+                    _flippers.Add(flipper);
+
                 });
                 
             }
             
         }
+
+        private void ReMapCardDeck()
+        {
+
+            
+        }
         #endregion
     }
+
+
 }
