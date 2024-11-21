@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System.Windows.Input;
 using UnityEngine;
 
 namespace HCC.Structs
 {
     
-        public readonly ref struct ShuffleDeck<TScriptableParam> where TScriptableParam : ScriptableObject
+        public readonly ref struct ShuffleDeck<TScriptableParam>  where TScriptableParam : ScriptableObject
         {
             private readonly int _length;
             private readonly TScriptableParam[] _paramsRef;

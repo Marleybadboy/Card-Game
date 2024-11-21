@@ -1,4 +1,6 @@
+
 using HCC.DataBase;
+using HCC.Interfaces;
 using HCC.Structs;
 using UnityEngine;
 
@@ -10,7 +12,8 @@ namespace HCC.Cards
         
         [SerializeField] private CardData _cardData;
         
-        private CardType _cardType;
+        [SerializeField] private CardType _cardType;
+        private IFlipper _flliperType;
         
         #endregion
 
@@ -20,21 +23,41 @@ namespace HCC.Cards
 
         #region Functions
 
-        // Start is called before the first frame update
-        void Start()
+        private void OnDestroy()
         {
-
+            _cardData.CardButton.onClick.RemoveAllListeners();
         }
 
         #endregion
 
         #region Methods
 
-        public void Initialize(CardData cardData)
+        public bool CardMatch(CardType type)
         {
+            return _cardType == type;
+        }
+
+        public void Initialize(CardType cardType, IFlipper flipper)
+        {
+            _cardType = cardType;
+            _flliperType = flipper;
             
+            AssignFlipper();
             
         }
+
+        public void RestoreFlipper()
+        {
+            _flliperType.Restore();
+        }
+
+        private void AssignFlipper()
+        {
+            _flliperType.Initialize(_cardData.CardFront, _cardData.CardBack);
+            
+            _cardData.CardButton.onClick.AddListener(_flliperType.Flip);
+        }
+        
         #endregion
     }
 }

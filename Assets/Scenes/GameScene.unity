@@ -388,23 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831466781d16c7e44912e556883d997a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _height: 4
-  _width: 4
-  _boardContentParent: {fileID: 1493701221}
-  _linePrefab:
-    m_AssetGUID: 0c364d16d132da14a95baaedcdc4732c
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  _cardPrefab:
-    m_AssetGUID: 391a9d0c9336154498e10ac4e3a8608e
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  _cardTypes:
-  - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-  - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-  - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+  _generator:
+    rid: 4584178921726279680
   _typesEx:
   - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
   - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
@@ -422,6 +407,52 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
   - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
   - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4584178921726279680
+      type: {class: GameBoardGenerator, ns: HCC.Generators, asm: Assembly-CSharp}
+      data:
+        _size:
+          _height: 4
+          _width: 4
+        _boardContentParent: {fileID: 1493701221}
+        _linePrefab:
+          m_AssetGUID: 0c364d16d132da14a95baaedcdc4732c
+          m_SubObjectName: 
+          m_SubObjectType: 
+          m_EditorAssetChanged: 0
+        _cardPrefab:
+          m_AssetGUID: 391a9d0c9336154498e10ac4e3a8608e
+          m_SubObjectName: 
+          m_SubObjectType: 
+          m_EditorAssetChanged: 0
+        _cardTypes:
+        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
+        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
+        _flipper:
+          rid: 4584178921726279681
+        _cardTypes2:
+        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
+        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
+        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
+        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
+        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
+        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
+        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
+        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
+        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
+        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
+        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
+    - rid: 4584178921726279681
+      type: {class: CardFlipper, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!1 &1493701220
 GameObject:
   m_ObjectHideFlags: 0

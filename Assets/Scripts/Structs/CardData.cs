@@ -22,7 +22,11 @@ namespace HCC.Structs
         #endregion
 
         #region Properties
-
+        
+        public Button CardButton => _cardButton;
+        public GameObject CardBack => _cardBack;
+        public GameObject CardFront => _cardFront;
+        
         #endregion
 
         #region Functions

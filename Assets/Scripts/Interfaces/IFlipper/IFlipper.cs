@@ -1,4 +1,5 @@
 
+using UnityEngine;
 
 namespace HCC.Interfaces
 {
@@ -15,7 +16,9 @@ namespace HCC.Interfaces
 
         #region Methods
 
+        public void Initialize(GameObject cardFront, GameObject cardBack);
         public void Flip();
+        public void Restore();
 
         #endregion
     }

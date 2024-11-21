@@ -1,19 +1,16 @@
 using DG.Tweening;
-using HCC.DataBase;
 using HCC.Interfaces;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class CardFlipper : MonoBehaviour, IFlipper
+public class CardFlipper : IFlipper
 {
 
     #region Fields
 
-    [SerializeField] private GameObject _cardBack;
-    [SerializeField] private GameObject _cardFront;
-
-    private CardType _cardType;
-
+    private GameObject _cardBack;
+    private GameObject _cardFront;
+    
     #endregion
 
     #region Properties
@@ -22,27 +19,27 @@ public class CardFlipper : MonoBehaviour, IFlipper
 
     #endregion
 
-    #region Functions
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    #endregion
-
     #region Methods
 
-    public void Initialize(CardType cardType)
+    public void Initialize(GameObject cardFront, GameObject cardBack)
     {
-        _cardType = cardType;
+        _cardFront = cardFront;
+        _cardBack = cardBack;
+        
     }
+    
     public void Flip()
     {
         Sequence seq = DOTween.Sequence();
 
         seq.Prepend(RotateCard(new float3(0f, 90f, 0), _cardBack.transform).OnComplete(() => { ActiveCardFront = true; RotateCard(float3.zero, _cardFront.transform); }));
+    }
+
+    public void Restore()
+    {
+        Sequence seq = DOTween.Sequence();
+        
+        seq.Prepend(RotateCard(new float3(0f, 90f, 0), _cardFront.transform).OnComplete(() => { ActiveCardFront = false; RotateCard(float3.zero, _cardBack.transform); }));
     }
 
     private Tween RotateCard(float3 endValue, Transform rotateObject) 
