@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using HCC.Addressables;
 using HCC.Cards;
 using HCC.DataBase;
-using HCC.Interfaces;
 using HCC.Structs;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -24,7 +22,7 @@ namespace HCC.Generators
 
         #region Methods
         
-        public abstract void Generate();
+        public abstract void Generate(Action OnCompleteCallback = null);
         
         #endregion
     }
@@ -45,30 +43,19 @@ namespace HCC.Generators
         [BoxGroup("Game Board")]
         [SerializeField] private CardType[] _cardTypes;
         
+
+        private Action _onCompleteCallback;
         
-        [BoxGroup("Flipper Type")]
-        [SerializeReference] private IFlipper _flipper;
-        
-        public List<CardType> _cardTypes2 = new List<CardType>();
         
         #endregion
 
         #region Methods
 
-        [Button("Flipper Type")]
-        private void Shuffle()
-        {
-            var shuffle =  new ShuffleDeck<CardType>(_size.Length, _cardTypes);
-            
-            shuffle.Execute();
-            
-            _cardTypes2 = shuffle.Result;
-            
-        }
-
-        public override void Generate()
+        public override void Generate(Action onCompleteCallback = null)
         {
             Results = new HashSet<object>();
+            
+            _onCompleteCallback = onCompleteCallback;
             
             CreateGameBoard();
         }
@@ -78,13 +65,8 @@ namespace HCC.Generators
             var shuffle =  new ShuffleDeck<CardType>(_size.Length, _cardTypes);
             
             shuffle.Execute();
-           
-            _cardTypes2= shuffle.Result;
             
             var result = shuffle.Result;
-            
-            Debug.Log(_cardTypes2.Count);
-            
             
             for (int i = 0; i < _size.Height; i++)
             {
@@ -124,6 +106,11 @@ namespace HCC.Generators
                     Results.Add(card);
 
                     card.Initialize(cardTypes[rowIndex * _size.Height + columngIndex], new CardFlipper());
+
+                    if (rowIndex * _size.Height + columngIndex + 1 >= _size.Length)
+                    {
+                        _onCompleteCallback?.Invoke();
+                    }
 
                 });
                 

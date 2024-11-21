@@ -390,23 +390,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _generator:
     rid: 4584178921726279680
-  _typesEx:
-  - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-  - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-  - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-  - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-  - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-  - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-  - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-  - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-  - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-  - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-  - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-  - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-  - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-  - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-  - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-  - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
   references:
     version: 2
     RefIds:
@@ -431,28 +414,6 @@ MonoBehaviour:
         - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
         - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
         - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-        _flipper:
-          rid: 4584178921726279681
-        _cardTypes2:
-        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-        - {fileID: 11400000, guid: eee6b851904c6734f966ead7bfc95a7b, type: 2}
-        - {fileID: 11400000, guid: f1b4b7906a027f846925587945e8d19e, type: 2}
-        - {fileID: 11400000, guid: 38a94ee3226848f409c503f30ba8d185, type: 2}
-    - rid: 4584178921726279681
-      type: {class: CardFlipper, ns: , asm: Assembly-CSharp}
-      data: 
 --- !u!1 &1493701220
 GameObject:
   m_ObjectHideFlags: 0

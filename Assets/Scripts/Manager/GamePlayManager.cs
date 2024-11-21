@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
-using HCC.DataBase;
+using System.Linq;
+using HCC.Cards;
 using HCC.Generators;
-using HCC.Interfaces;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace HCC.Manager
 {
@@ -14,9 +14,9 @@ namespace HCC.Manager
         [Header("Game Board Settings")]
         [SerializeReference] private Generator _generator;
         
-        private HashSet<IFlipper> _flippers = new HashSet<IFlipper>();
+        private HashSet<Card> _playerCards = new HashSet<Card>();
         
-        public List<CardType> _typesEx = new List<CardType>();
+        private Card _selectedFirstCard;
         
         #endregion
 
@@ -34,13 +34,56 @@ namespace HCC.Manager
 
         private void CreateGameBoard()
         {
-            _generator.Generate();
+            _generator.Generate(GetResults);
         }
 
         #endregion
 
         #region Methods
-        
+
+        private void GetResults()
+        {
+            Span<object> results = _generator.Results.ToArray();
+
+            foreach (var result in results)
+            {
+                Card card = (Card)result;
+
+                card.CardClicked += CheckCards;
+                
+                _playerCards.Add(card);
+            }
+            
+            Debug.Log(_playerCards.Count);
+        }
+
+        private void CheckCards(Card card)
+        {
+            if (_selectedFirstCard == null)
+            {
+                _selectedFirstCard = card;
+                
+                return;
+            }
+            
+            bool areMatches = _selectedFirstCard.CardMatch(card.CardType);
+
+            if (areMatches)
+            {
+                card.Disable();
+                _selectedFirstCard.Disable();
+                _selectedFirstCard = null;
+                
+                Debug.Log("Matched");
+                
+                return;
+
+            }
+            
+            _selectedFirstCard.RestoreFlipper();
+            card.RestoreFlipper();
+            _selectedFirstCard = null;
+        }
         #endregion
     }
 

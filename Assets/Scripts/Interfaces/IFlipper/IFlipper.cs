@@ -1,4 +1,6 @@
 
+using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace HCC.Interfaces
@@ -17,7 +19,7 @@ namespace HCC.Interfaces
         #region Methods
 
         public void Initialize(GameObject cardFront, GameObject cardBack);
-        public void Flip();
+        public void Flip(Action callback = null);
         public void Restore();
 
         #endregion
