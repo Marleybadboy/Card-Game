@@ -14,19 +14,25 @@ namespace HCC.Cards
         
         [SerializeField] private CardData _cardData;
         
-        [SerializeField] private CardType _cardType;
+        private CardType _cardType;
         private IFlipper _flliperType;
         
-        
         private Action<Card> _cardActionCallback;
+        private Action _cardClicked;
         
         #endregion
 
         #region Properties
-        public event Action<Card> CardClicked
+        public event Action<Card> CardClickedCompleteCallback
         {
             add => _cardActionCallback += value;
             remove => _cardActionCallback -= value;
+        }
+        
+        public event Action CardClicked
+        {
+            add => _cardClicked += value;
+            remove => _cardClicked -= value;
         }
         
         private bool ActiveSides { set { _cardData.CardFront.SetActive(value); _cardData.CardBack.SetActive(value); } }
@@ -83,6 +89,8 @@ namespace HCC.Cards
             _cardData.CardButton.onClick.AddListener(() =>
             {
                 _flliperType.Flip(() => { _cardActionCallback?.Invoke(this); });
+                
+                _cardClicked?.Invoke();
 
             });
         }

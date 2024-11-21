@@ -25,6 +25,22 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/CardTemplate/Card.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 309a33b79bbb0634383f2a3257e7a26b
+    m_Address: Assets/Audio/GameClips/CardFlip.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2d6413d2b48c5e348968419c2998918a
+    m_Address: Assets/Audio/GameClips/Lose.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b8197309d15d9a9408c5f57f9ae1e90b
+    m_Address: Assets/Audio/GameClips/Match.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4423d1df003e2ca4db62083cd2823541
+    m_Address: Assets/Audio/GameClips/Win.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 235fd10502795fc43b696f7cebe60f29, type: 2}
   m_SchemaSet:

@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
+using HCC.Audio;
 using HCC.Cards;
+using HCC.Enums;
 using HCC.Generators;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace HCC.Manager
 {
@@ -14,9 +19,17 @@ namespace HCC.Manager
         [Header("Game Board Settings")]
         [SerializeReference] private Generator _generator;
         
+        
+        [SerializeReference] private Counter _multiplierCounter;
+        [SerializeReference] private Counter _scoreCounter;
+        [SerializeReference] private Counter _TurnsCounter;
+        
         private HashSet<Card> _playerCards = new HashSet<Card>();
         
         private Card _selectedFirstCard;
+        
+        [Inject]
+        private AudioPlayer _audioPlayer;
         
         #endregion
 
@@ -41,20 +54,33 @@ namespace HCC.Manager
 
         #region Methods
 
+        [Button]
+        private void check()
+        {
+            Debug.Log(_audioPlayer != null);
+        }
+
         private void GetResults()
         {
             Span<object> results = _generator.Results.ToArray();
 
             foreach (var result in results)
             {
-                Card card = (Card)result;
-
-                card.CardClicked += CheckCards;
-                
-                _playerCards.Add(card);
+                AssignToCard((Card)result);
             }
+
+            _ = WaitToRestore();
             
-            Debug.Log(_playerCards.Count);
+        }
+
+        private void AssignToCard(Card card)
+        {
+            card.CardClickedCompleteCallback += CheckCards;
+                
+            card.CardClicked += () => _audioPlayer.Play(AudioGameType.Flipping);
+                
+            _playerCards.Add(card);
+            
         }
 
         private void CheckCards(Card card)
@@ -67,22 +93,53 @@ namespace HCC.Manager
             }
             
             bool areMatches = _selectedFirstCard.CardMatch(card.CardType);
+            
+            _TurnsCounter.ChangeCounter(1);
 
             if (areMatches)
             {
+                _audioPlayer.Play(AudioGameType.Match);
+
                 card.Disable();
                 _selectedFirstCard.Disable();
+                
+                _playerCards.Remove(card);
+                _playerCards.Remove(_selectedFirstCard);
+                
                 _selectedFirstCard = null;
                 
-                Debug.Log("Matched");
-                
+                _scoreCounter.ChangeCounter(1 * _multiplierCounter.GetActualPoints());
+                _multiplierCounter.ChangeCounter(1);
+
+                if (_playerCards.Count == 0)
+                {
+                    _audioPlayer.Play(AudioGameType.GameOver);
+                }
+
                 return;
 
             }
             
+            _multiplierCounter.ResetCounter();
+            
             _selectedFirstCard.RestoreFlipper();
             card.RestoreFlipper();
             _selectedFirstCard = null;
+            
+            _audioPlayer.Play(AudioGameType.Mismatch);
+        }
+
+
+
+        private async UniTaskVoid WaitToRestore()
+        {
+            await UniTask.WaitForSeconds(2f);
+
+            foreach (var card in _playerCards)
+            {
+                card.RestoreFlipper();
+            }
+
         }
         #endregion
     }

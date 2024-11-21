@@ -1,23 +1,16 @@
+using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-public class AdditionalAssetReference : MonoBehaviour
+namespace HCC.Addressables
 {
-    #region Fields
-    #endregion
-
-    #region Properties
-    #endregion
-
-    #region Functions
-
-   // Start is called before the first frame update
-    void Start()
+    [Serializable]
+    public class AssetReferenceAudioClip : AssetReferenceT<AudioClip>
     {
-        
+        public AssetReferenceAudioClip(string guid) : base(guid)
+        {
+            
+        }
     }
-
-    #endregion
-
-    #region Methods
-    #endregion 
+    
 }
