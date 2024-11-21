@@ -23,6 +23,12 @@ namespace HCC.Structs
         
         #region Methods
 
+        public BoardSize(int lengthValue, int valueDivider)
+        {
+            _height = lengthValue/valueDivider;
+            _width = lengthValue/valueDivider;
+        }
+        
         #endregion
     }
 }

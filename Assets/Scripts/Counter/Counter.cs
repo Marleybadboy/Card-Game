@@ -1,9 +1,11 @@
 
 using System.Text;
+using HCC.Interfaces;
 using TMPro;
 using UnityEngine;
 
-public class Counter : MonoBehaviour
+
+public class Counter : MonoBehaviour, ISave
 {
     #region Fields
 
@@ -52,4 +54,9 @@ public class Counter : MonoBehaviour
         
     }
     #endregion
+
+    public int GetSaveValue()
+    {
+        return GetActualPoints();
+    }
 }

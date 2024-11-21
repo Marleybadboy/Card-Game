@@ -22,7 +22,7 @@ namespace HCC.Generators
 
         #region Methods
         
-        public abstract void Generate(Action OnCompleteCallback = null);
+        public abstract void Generate(GamePlaySettings gamePlaySettings, Action OnCompleteCallback = null);
         
         #endregion
     }
@@ -30,9 +30,6 @@ namespace HCC.Generators
     public class GameBoardGenerator : Generator
     {
         #region Fields
-        
-        [BoxGroup("Board Size")]
-        [SerializeField] private BoardSize _size;
         
         [BoxGroup("Game Board")]
         [SerializeField] private Transform _boardContentParent;
@@ -43,7 +40,7 @@ namespace HCC.Generators
         [BoxGroup("Game Board")]
         [SerializeField] private CardType[] _cardTypes;
         
-
+        private BoardSize _size;
         private Action _onCompleteCallback;
         
         
@@ -51,8 +48,10 @@ namespace HCC.Generators
 
         #region Methods
 
-        public override void Generate(Action onCompleteCallback = null)
+        public override void Generate(GamePlaySettings gamePlaySettings,Action onCompleteCallback = null)
         {
+            _size = gamePlaySettings.SettingData.Size;
+            
             Results = new HashSet<object>();
             
             _onCompleteCallback = onCompleteCallback;

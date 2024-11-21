@@ -556,18 +556,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _generator:
     rid: 4584178921726279680
-  _multiplierCounter: {fileID: 2087096301}
-  _scoreCounter: {fileID: 2103610287}
-  _TurnsCounter: {fileID: 1794691112}
+  _settings: {fileID: 11400000, guid: f052e6a469816014ebbd55cee2ed955b, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 4584178921726279680
       type: {class: GameBoardGenerator, ns: HCC.Generators, asm: Assembly-CSharp}
       data:
-        _size:
-          _height: 4
-          _width: 4
         _boardContentParent: {fileID: 1493701221}
         _linePrefab:
           m_AssetGUID: 0c364d16d132da14a95baaedcdc4732c
@@ -937,6 +932,7 @@ GameObject:
   - component: {fileID: 1826173365}
   - component: {fileID: 1826173364}
   - component: {fileID: 1826173363}
+  - component: {fileID: 1826173366}
   m_Layer: 5
   m_Name: HomeButton
   m_TagString: Untagged
@@ -1008,7 +1004,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1826173364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1826173366}
+        m_TargetAssemblyTypeName: HCC.SaveSystem.SaveComponent, Assembly-CSharp
+        m_MethodName: SaveAllData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   sceneNameToLoad: GameScene
 --- !u!114 &1826173364
 MonoBehaviour:
@@ -1048,6 +1056,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826173361}
   m_CullTransparentMesh: 1
+--- !u!114 &1826173366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826173361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d7668fc0c849140b1b873af63119f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _saveData:
+  - _saveDataName: 1
+    _saveComponent: {fileID: 2087096301}
+  - _saveDataName: 2
+    _saveComponent: {fileID: 2103610287}
+  - _saveDataName: 3
+    _saveComponent: {fileID: 1794691112}
+  - _saveDataName: 0
+    _saveComponent: {fileID: 1492127738}
 --- !u!1 &2018169130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gamePlayManager: {fileID: 1492127738}
+  _multiplierCounter: {fileID: 2087096301}
+  _scoreCounter: {fileID: 2103610287}
+  _turnsCounter: {fileID: 1794691112}
 --- !u!1001 &2087096299
 PrefabInstance:
   m_ObjectHideFlags: 0
