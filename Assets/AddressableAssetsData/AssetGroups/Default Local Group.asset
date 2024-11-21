@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: Assets/Audio/GameClips/Win.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: e768493ddca804421b25bd6727f9c844
+    m_Address: Assets/Graphics/2D Casual UI/Sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 235fd10502795fc43b696f7cebe60f29, type: 2}
   m_SchemaSet:

@@ -18,6 +18,9 @@ namespace HCC.Structs
         
         [BoxGroup("Card UI Data")]
         [SerializeField] private GameObject _cardFront;
+        
+        [BoxGroup("Card UI Data")]
+        [SerializeField] private Image _cardIcon;
 
         #endregion
 
@@ -26,6 +29,7 @@ namespace HCC.Structs
         public Button CardButton => _cardButton;
         public GameObject CardBack => _cardBack;
         public GameObject CardFront => _cardFront;
+        public Image CardIcon => _cardIcon;
         
         #endregion
 

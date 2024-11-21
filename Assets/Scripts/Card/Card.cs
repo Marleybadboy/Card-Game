@@ -1,10 +1,12 @@
 
 using System;
 using DG.Tweening;
+using HCC.Addressables;
 using HCC.DataBase;
 using HCC.Interfaces;
 using HCC.Structs;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace HCC.Cards
 {
@@ -73,8 +75,17 @@ namespace HCC.Cards
             _cardType = cardType;
             _flliperType = flipper;
             
+            LoadIcon();
             AssignFlipper();
             
+        }
+
+        private void LoadIcon()
+        {
+            AssetLoader.LoadAddressable<AssetReferenceSprite,Sprite>(_cardType.CardTypeIcon, (sprite) =>
+            {
+                _cardData.CardIcon.sprite = sprite;
+            });
         }
 
         public void RestoreFlipper()

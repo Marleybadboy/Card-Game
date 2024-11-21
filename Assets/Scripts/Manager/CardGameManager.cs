@@ -2,15 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using HCC.Cards;
 using HCC.Enums;
 using HCC.Interfaces;
+using UnityEngine;
 
 namespace HCC.Manager
 {
     public class CardGameManager : GamePlayManager, ISave
     {
         #region Fields
+
+        [SerializeField] private CanvasGroup _winPanel;
 
         private HashSet<Card> _playerCards = new HashSet<Card>();
         private Card _selectedFirstCard;
@@ -34,8 +38,16 @@ namespace HCC.Manager
         {
             if (_playerCards.Count == 0)
             {
+                Debug.LogError("WINNER");
                 AudioPlayer.Play(AudioGameType.GameOver);
+
+                ShowWinPanel();
             }
+        }
+
+        private void ShowWinPanel()
+        {
+            _winPanel.DOFade(1f, 0.5f);
         }
 
         private void AssignToCard(Card card)
@@ -91,6 +103,8 @@ namespace HCC.Manager
         private void CheckScores()
         {
             var multiplier = this[SaveDataNames.Multiplier].GetActualPoints() > 0 ? this[SaveDataNames.Multiplier].GetActualPoints() : 1;
+            
+            Debug.Log("score" + multiplier);
             
             this[SaveDataNames.Points].ChangeCounter(1 * multiplier);
             this[SaveDataNames.Multiplier].ChangeCounter(1);
