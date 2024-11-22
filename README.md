@@ -36,3 +36,22 @@ The new game initializes the default gameplay according to the settings found in
 </p>
 
 The game supports all settings. Among others 4x5, 4x4, 6x4 and so on.
+
+## Summary
+The elements that have been made are:
+* Possibilities to set any size of GameBoard
+* Rotating cards with animation made with DOTween. 
+* System for saving and loading gameplay. If we exit the game we can return to it by clicking the Continue button
+* Scoring system if you match cards in addition we get a multiplier which for each successful series increases. If we stop the series the multiplier resets.
+* Implementation of sounds such as card rotation, match, mismatch, gameover
+* Implementation of the Main Menu with the ability to continue gameplay
+* A system for creating new cards based on ScriptableObject
+
+### Use of plug-ins
+
+1. DOTween
+2. UniTask
+3. Addressables
+4. Zenject
+
+
