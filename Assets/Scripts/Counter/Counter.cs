@@ -14,18 +14,6 @@ public class Counter : MonoBehaviour, ISave
 
     #endregion
 
-    #region Properties
-
-    #endregion
-
-    #region Functions
-
-    private void Start()
-    {
-        ResetCounter();
-    }
-
-    #endregion
 
     #region Methods
     

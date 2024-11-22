@@ -72,6 +72,8 @@ namespace HCC.Manager
 
             var data = _settings.SettingData;
             
+            Debug.Log($"Game Board Created: {data[SaveDataNames.Turns]}");
+            
             _multiplierCounter.ChangeCounter(data[SaveDataNames.Multiplier]);
             _scoreCounter.ChangeCounter(data[SaveDataNames.Points]);
             _turnsCounter.ChangeCounter(data[SaveDataNames.Turns]);

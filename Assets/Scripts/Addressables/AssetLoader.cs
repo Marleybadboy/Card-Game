@@ -48,7 +48,6 @@ namespace HCC.Addressables
             { 
                 onCompleteCallback?.Invoke(operationHandler.Result);
                 
-                assetReferenceGameObject.ReleaseAsset();
             }
         }
         
