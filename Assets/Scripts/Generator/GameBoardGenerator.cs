@@ -54,7 +54,7 @@ namespace HCC.Generators
             shuffle.Execute();
 
             var result = shuffle.Result;
-
+            
             for (int i = 0; i < _size.Height; i++)
             {
                 var rowIndex = i;
@@ -91,7 +91,6 @@ namespace HCC.Generators
                     var card = prefab.GetComponent<Card>() ?? prefab.AddComponent<Card>();
 
                     Results.Add(card);
-
 
                     card.Initialize(cardTypes[rowIndex * _size.Width + columngIndex], new CardFlipper());
 

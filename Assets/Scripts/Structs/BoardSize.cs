@@ -28,10 +28,8 @@ namespace HCC.Structs
             _height = 0;
             _width = 0;
             
-            _height =  FindDivider(lengthValue);
+            _height =  FindDivider(lengthValue) == 0 ? lengthValue :  FindDivider(lengthValue);
             _width = lengthValue / _height > 2 ? lengthValue / _height : 1;
-            
-            Debug.Log($"length: {lengthValue}, width: {_width}, height: {_height}");
             
         }
 
@@ -39,7 +37,7 @@ namespace HCC.Structs
         {
             int divider = 0;
             
-            if(lengthValue <= 2) return 1;
+            if(lengthValue < 2) return 1;
 
             for (int i = 2; i < lengthValue/2; i++)
             {
