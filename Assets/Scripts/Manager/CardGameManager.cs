@@ -25,7 +25,7 @@ namespace HCC.Manager
         protected override void GetResults()
         {
                 Span<object> results = Generator.Results.ToArray();
-
+                
                 foreach (var result in results)
                 {
                     AssignToCard((Card)result);
@@ -38,7 +38,6 @@ namespace HCC.Manager
         {
             if (_playerCards.Count == 0)
             {
-                Debug.LogError("WINNER");
                 AudioPlayer.Play(AudioGameType.GameOver);
 
                 ShowWinPanel();
@@ -47,7 +46,11 @@ namespace HCC.Manager
 
         private void ShowWinPanel()
         {
-            _winPanel.DOFade(1f, 0.5f);
+            _winPanel.DOFade(1f, 0.5f).OnComplete(() =>
+            {
+                _winPanel.interactable = true;
+                _winPanel.blocksRaycasts = true;
+            });
         }
 
         private void AssignToCard(Card card)
@@ -103,8 +106,6 @@ namespace HCC.Manager
         private void CheckScores()
         {
             var multiplier = this[SaveDataNames.Multiplier].GetActualPoints() > 0 ? this[SaveDataNames.Multiplier].GetActualPoints() : 1;
-            
-            Debug.Log("score" + multiplier);
             
             this[SaveDataNames.Points].ChangeCounter(1 * multiplier);
             this[SaveDataNames.Multiplier].ChangeCounter(1);

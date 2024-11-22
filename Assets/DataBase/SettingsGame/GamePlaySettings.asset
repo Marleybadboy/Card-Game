@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GamePlaySettings
   m_EditorClassIdentifier: 
   _size:
-    _height: 4
+    _height: 5
     _width: 4

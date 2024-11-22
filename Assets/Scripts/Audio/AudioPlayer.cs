@@ -25,9 +25,7 @@ namespace HCC.Audio
         {
             _audioData = audioData;
             _audioSource = audioSource;
-            
-            Debug.Log(_audioData.Length);
-            Debug.Log(_audioSource != null);
+
         }
 
         public void Play(AudioGameType audioType)

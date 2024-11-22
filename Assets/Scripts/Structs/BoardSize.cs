@@ -25,8 +25,30 @@ namespace HCC.Structs
 
         public BoardSize(int lengthValue, int valueDivider)
         {
-            _height = lengthValue/valueDivider;
-            _width = lengthValue/valueDivider;
+            _height = 0;
+            _width = 0;
+            
+            _height =  FindDivider(lengthValue);
+            _width = lengthValue / _height > 2 ? lengthValue / _height : 1;
+            
+            Debug.Log($"length: {lengthValue}, width: {_width}, height: {_height}");
+            
+        }
+
+        private int FindDivider(int lengthValue)
+        {
+            int divider = 0;
+            
+            if(lengthValue <= 2) return 1;
+
+            for (int i = 2; i < lengthValue/2; i++)
+            {
+                if (lengthValue % i == 0)
+                {
+                    divider = i;
+                }
+            }
+            return divider;
         }
         
         #endregion

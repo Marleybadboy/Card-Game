@@ -18,6 +18,18 @@ namespace HCC.SaveSystem
         {
             return PlayerPrefs.GetInt(name.ToString());
         }
+
+        public static void Clear()
+        {
+            PlayerPrefs.DeleteAll();
+            
+            PlayerPrefs.Save();
+        }
+
+        public static bool Exists(SaveDataNames name = SaveDataNames.GameBoardSize)
+        {
+            return PlayerPrefs.HasKey(name.ToString());
+        } 
         #endregion
     }
 }

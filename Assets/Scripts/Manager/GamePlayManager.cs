@@ -63,14 +63,18 @@ namespace HCC.Manager
         
         public virtual void Start()
         {
-            _settings.LoadDefault();
-            
             CreateGameBoard();
         }
 
         protected virtual void CreateGameBoard()
         {
             _generator.Generate(_settings,GetResults);
+
+            var data = _settings.SettingData;
+            
+            _multiplierCounter.ChangeCounter(data[SaveDataNames.Multiplier]);
+            _scoreCounter.ChangeCounter(data[SaveDataNames.Points]);
+            _turnsCounter.ChangeCounter(data[SaveDataNames.Turns]);
         }
 
         #endregion

@@ -1,5 +1,6 @@
 
-using UnityEngine;
+
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace HCC.LoadSceneButton
@@ -32,9 +33,7 @@ namespace HCC.LoadSceneButton
 
         private void LoadScene()
         {
-            //SceneManager.LoadSceneAsync(sceneNameToLoad);
-
-            Debug.Log("Loading scene " + sceneNameToLoad);
+            SceneManager.LoadSceneAsync(sceneNameToLoad);
         }
 
         #endregion

@@ -45,6 +45,14 @@ MonoBehaviour:
     m_Address: Assets/Graphics/2D Casual UI/Sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2cda990e2423bbf4892e6590ba056729
+    m_Address: Assets/Scenes/GameScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cc582273b0735094486a5e220ae394fa
+    m_Address: Assets/Scenes/MainMenu.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 235fd10502795fc43b696f7cebe60f29, type: 2}
   m_SchemaSet:

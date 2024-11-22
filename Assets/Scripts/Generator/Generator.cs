@@ -42,7 +42,8 @@ namespace HCC.Generators
         
         private BoardSize _size;
         private Action _onCompleteCallback;
-        
+        private CardType[,] _cards;
+        private int _correctValueIndex;
         
         #endregion
 
@@ -66,6 +67,10 @@ namespace HCC.Generators
             shuffle.Execute();
             
             var result = shuffle.Result;
+            
+            _cards = Convert2DArray(result,_size.Height,_size.Width);
+            
+            CheckCorrectValue();
             
             for (int i = 0; i < _size.Height; i++)
             {
@@ -104,9 +109,14 @@ namespace HCC.Generators
                     
                     Results.Add(card);
 
-                    card.Initialize(cardTypes[rowIndex * _size.Height + columngIndex], new CardFlipper());
+                    //Debug.Log(rowIndex * _size.Width + columngIndex);
+                    
+                    card.Initialize(cardTypes[rowIndex * _size.Width + columngIndex], new CardFlipper());
+                    
+                    //card.Initialize(_cards[rowIndex,columngIndex], new CardFlipper());
+                    
 
-                    if (rowIndex * _size.Height + columngIndex + 1 >= _size.Length)
+                    if (rowIndex * _size.Width + columngIndex + 1 >= _size.Length)
                     {
                         _onCompleteCallback?.Invoke();
                     }
@@ -115,7 +125,26 @@ namespace HCC.Generators
                 
             }
         }
-        
+
+        private void CheckCorrectValue()
+        {
+            _correctValueIndex =  _size.Height > _size.Width ? _size.Width : _size.Height;
+        }
+
+        private CardType[,] Convert2DArray(List<CardType> cardsTypes, int rows, int columns)
+        {
+            CardType[,] result = new CardType[rows, columns];
+
+            for (int i = 0; i < cardsTypes.Count; i++)
+            {
+                int row = i / columns;
+                int column = i % columns;
+                
+                result[row, column] = cardsTypes[i];
+            }
+            
+            return result;
+        }
 
         #endregion
 
